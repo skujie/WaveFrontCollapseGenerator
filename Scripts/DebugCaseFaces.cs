@@ -8,15 +8,25 @@ using UnityEditor;
 public class DebugCaseFaces : MonoBehaviour
 {
 #if UNITY_EDITOR
-    [SerializeField] private InstantiableCase _caseData;
-    private void OnDrawGizmosSelected()
+    [SerializeField] protected InstantiableCase _caseData;
+    protected virtual void OnDrawGizmosSelected()
     {
         float cellSize = WFCG_Constants.WFCG_CELL_SIZE;
 
-        Gizmos.color = new Color(0, .5f, 0f, .5f);
-        Gizmos.DrawCube(transform.position, Vector3.one * cellSize);
+        DrawCell(cellSize);
 
         cellSize /= 1.75f;
+        DrawSideIDs(cellSize);
+    }
+
+    protected virtual void DrawCell(float cellSize)
+    {
+        Gizmos.color = new Color(0, .5f, 0f, .5f);
+        Gizmos.DrawCube(transform.position, Vector3.one * cellSize);
+    }
+
+    protected virtual void DrawSideIDs(float cellSize)
+    {
         GUIStyle style = new();
         style.richText = true;
         style.fontSize = 24;

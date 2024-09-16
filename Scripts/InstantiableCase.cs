@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WFCG_Case", menuName ="ScriptableObject/WFCGeneration/Case", order =1)]
 public class InstantiableCase : ScriptableObject
 {
-    [SerializeField] private int _faceUp, _faceDown, _faceRight, _faceLeft, _faceFront, _faceBack;
+    [SerializeField] protected int _faceUp, _faceDown, _faceRight, _faceLeft, _faceFront, _faceBack;
 
-    [SerializeField] private GameObject _casePrefab;
+    [SerializeField] protected GameObject _casePrefab;
 
     public int FaceUp => _faceUp;
     public int FaceDown => _faceDown;
